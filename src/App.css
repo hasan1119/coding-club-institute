@@ -13,6 +13,17 @@
   }
 }
 
+span.badge.bg-primary {
+  position: relative;
+  font-size: 17px !important;
+  padding: 0 !important;
+  top: -6px !important;
+  background-color: orange !important;
+  width: 15px !important;
+  display: inline-block;
+  border-radius: 50%;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
