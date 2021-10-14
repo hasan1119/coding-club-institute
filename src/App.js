@@ -1,11 +1,61 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/header/Header.js";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import Home from "./pages/Home.js";
+import About from "./pages/About.js";
+import Contact from "./pages/Contact.js";
+import Courses from "./pages/Courses.js";
+import Cart from "./pages/Cart.js";
+import Login from "./pages/Login.js";
+import Signup from "./pages/Signup.js";
+import PageNotFound from "./pages/PageNotFound.js";
 
 function App() {
   return (
     <div>
-      <Header></Header>
+      <Router>
+        <Header></Header>
+
+        <Switch>
+          <Route exact path="/">
+            <Home></Home>
+          </Route>
+
+          <Route path="/home">
+            <Home></Home>
+          </Route>
+
+          <Route path="/about">
+            <About></About>
+          </Route>
+
+          <Route path="/contact">
+            <Contact></Contact>
+          </Route>
+
+          <Route path="/courses">
+            <Courses></Courses>
+          </Route>
+
+          <Route path="/cart">
+            <Cart></Cart>
+          </Route>
+
+          <Route path="/login">
+            <Login></Login>
+          </Route>
+
+          <Route path="/signup">
+            <Signup></Signup>
+          </Route>
+
+          <Route path="*">
+            <PageNotFound></PageNotFound>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
