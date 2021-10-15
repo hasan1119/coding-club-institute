@@ -1,22 +1,35 @@
 import { useEffect, useState } from "react";
 import {
+  sendEmailVerification,
+  updateProfile,
+  createUserWithEmailAndPassword,
+  FacebookAuthProvider,
+  GithubAuthProvider,
   signOut,
   getAuth,
   onAuthStateChanged,
   signInWithPopup,
   GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import firebaseInitialization from "./../firebase/firebase.init.js";
 firebaseInitialization();
 
 // Providers
 const googleProvider = new GoogleAuthProvider();
+const gitHubProvider = new GithubAuthProvider();
+const fbProvider = new FacebookAuthProvider();
 
 const auth = getAuth();
 
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [password, setPassword] = useState("");
 
   // google sign in
   function signInWithGoogle() {
@@ -27,6 +40,57 @@ const useFirebase = () => {
       .catch((err) => {
         setError(err.message);
       });
+  }
+
+  // gitHub sign in
+  function signInWithGithub() {
+    signInWithPopup(auth, gitHubProvider)
+      .then((result) => {
+        setUser(result.user);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  }
+
+  // facebook sign in
+  function signInWithFacebook() {
+    signInWithPopup(auth, fbProvider)
+      .then((result) => {
+        setUser(result.user);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  }
+  // Email sign in
+  function signInWithEmail(e) {
+    e.preventDefault();
+    console.log(email, password);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        setUser(result.user);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  }
+  // set name and profile image url
+  function setNameAndImage() {
+    updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    })
+      .then(() => {})
+      .catch((error) => {
+        setError(error.message);
+      });
+  }
+
+  function emailVerify() {
+    sendEmailVerification(auth.currentUser).then(() => {
+      alert(`An Verification mail has been set to ${email}`);
+    });
   }
 
   // Get the currently signed-in user
@@ -50,11 +114,64 @@ const useFirebase = () => {
       });
   }
 
+  // reset password
+  function passwordReset(e) {
+    e.preventDefault();
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert("password reset email has been sent");
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  }
+
+  // sign up with email password
+  function singUp(e) {
+    e.preventDefault();
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        setNameAndImage();
+        emailVerify();
+        alert("user has been created");
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  }
+  // get name
+  function getName(e) {
+    setName(e?.target?.value);
+  }
+
+  // get Email
+  function getEmail(e) {
+    setEmail(e?.target?.value);
+  }
+  // Get password
+  function getPassword(e) {
+    setPassword(e?.target?.value);
+  }
+  // Get photoUrl
+  function getPhoto(e) {
+    setPhoto(e?.target?.value);
+  }
+
   return {
+    signInWithEmail,
+    signInWithFacebook,
+    signInWithGithub,
     logOut,
     signInWithGoogle,
     user,
     error,
+    getPassword,
+    getEmail,
+    singUp,
+    getPhoto,
+    getName,
+    passwordReset,
   };
 };
 

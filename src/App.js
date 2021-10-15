@@ -12,6 +12,8 @@ import Login from "./pages/Login.js";
 import Signup from "./pages/Signup.js";
 import PageNotFound from "./pages/PageNotFound.js";
 import AuthProvider from "./contexts/AuthProvider.js";
+import Footer from "./components/footer/Footer.js";
+import Reset from "./pages/Reset.js";
 
 function App() {
   return (
@@ -53,10 +55,15 @@ function App() {
               <Signup></Signup>
             </Route>
 
+            <Route path="/reset">
+              <Reset></Reset>
+            </Route>
+
             <Route path="*">
               <PageNotFound></PageNotFound>
             </Route>
           </Switch>
+          <Footer></Footer>
         </Router>
       </AuthProvider>
     </div>
