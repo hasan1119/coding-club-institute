@@ -8,11 +8,11 @@ import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth.js";
 
 const Header = () => {
-  const { AllContexts } = useAuth();
+  const { AllContexts, selectedCourse } = useAuth();
   const { user, logOut } = AllContexts;
   const { displayName, photoURL, email } = user;
   return (
-    <div>
+    <div className="sticky-top">
       <Navbar style={{ background: `url(${HeaderBG})` }} expand="lg">
         <Container>
           <Navbar.Brand as={NavLink} className="text-white" to="/home">
@@ -41,7 +41,7 @@ const Header = () => {
                   style={{ fontSize: "20px" }}
                   icon={faShoppingCart}
                 />
-                <Badge>0</Badge>
+                <Badge>{selectedCourse.length}</Badge>
               </Nav.Link>
 
               {!displayName ? (

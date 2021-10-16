@@ -14,6 +14,8 @@ import PageNotFound from "./pages/PageNotFound.js";
 import AuthProvider from "./contexts/AuthProvider.js";
 import Footer from "./components/footer/Footer.js";
 import Reset from "./pages/Reset.js";
+import Details from "./pages/Details.js";
+import PrivateRoute from "./route/PrivateRoute.js";
 
 function App() {
   return (
@@ -39,13 +41,13 @@ function App() {
               <Contact></Contact>
             </Route>
 
-            <Route path="/courses">
+            <Route exact path="/courses">
               <Courses></Courses>
             </Route>
 
-            <Route path="/cart">
+            <PrivateRoute path="/cart">
               <Cart></Cart>
-            </Route>
+            </PrivateRoute>
 
             <Route path="/login">
               <Login></Login>
@@ -57,6 +59,10 @@ function App() {
 
             <Route path="/reset">
               <Reset></Reset>
+            </Route>
+
+            <Route path="/courses/:key">
+              <Details></Details>
             </Route>
 
             <Route path="*">

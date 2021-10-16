@@ -40,47 +40,22 @@ const useFirebase = () => {
 
   // google sign in
   function signInWithGoogle() {
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        setUser(result.user);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+    return signInWithPopup(auth, googleProvider);
   }
 
   // gitHub sign in
   function signInWithGithub() {
-    signInWithPopup(auth, gitHubProvider)
-      .then((result) => {
-        setUser(result.user);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+    return signInWithPopup(auth, gitHubProvider);
   }
 
   // facebook sign in
   function signInWithFacebook() {
-    signInWithPopup(auth, fbProvider)
-      .then((result) => {
-        setUser(result.user);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+    return signInWithPopup(auth, fbProvider);
   }
   // Email sign in
   function signInWithEmail(e) {
     e.preventDefault();
-    console.log(email, password);
-    signInWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        setUser(result.user);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+    return signInWithEmailAndPassword(auth, email, password);
   }
   // set name and profile image url
   function setNameAndImage() {
@@ -172,7 +147,9 @@ const useFirebase = () => {
     logOut,
     signInWithGoogle,
     user,
+    setUser,
     error,
+    setError,
     getPassword,
     getEmail,
     singUp,

@@ -5,9 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar as fullStar } from "@fortawesome/free-solid-svg-icons";
 import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
 import Zoom from "react-reveal/Zoom";
+import { NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth.js";
 
 const Course = ({ course }) => {
-  const { img, title, desc, price, rating, ratingCount } = course;
+  const { key, img, title, desc, price, rating, ratingCount } = course;
+
+  const { addToCart } = useAuth();
 
   return (
     <Zoom>
@@ -32,16 +36,26 @@ const Course = ({ course }) => {
                 fullSymbol={
                   <FontAwesomeIcon className="text-warning" icon={fullStar} />
                 }
-              />{" "}
+              />
               <span>{rating}</span>
             </Col>
             <Col>Total review {ratingCount}</Col>
           </Row>
         </Card.Body>
         <Card.Body className="d-flex">
-          <button className="btn btn-primary w-100 me-1">View Details</button>
+          <NavLink
+            to={`/courses/${key}`}
+            className="btn btn-primary w-100 me-1"
+          >
+            View Details
+          </NavLink>
 
-          <button className="btn btn-primary  w-100">Add to Cart</button>
+          <button
+            onClick={() => addToCart(course)}
+            className="btn btn-primary  w-100"
+          >
+            Add to Cart
+          </button>
         </Card.Body>
       </Card>
     </Zoom>

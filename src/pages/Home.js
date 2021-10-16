@@ -6,6 +6,7 @@ import Bounce from "react-reveal/Bounce";
 import Slide from "react-reveal/Slide";
 import { NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth.js";
+import Course from "../components/course/Course.js";
 
 const Home = () => {
   const { courses } = useAuth();
@@ -49,7 +50,28 @@ const Home = () => {
         </Container>
       </div>
 
-      <h1>{courses.length}</h1>
+      <div className="py-5" style={{ background: `url(${bgImage})` }}>
+        <div className="text-center text-white">
+          <Slide left>
+            <h1>Our Feature Courses</h1>
+          </Slide>
+
+          <Slide right>
+            <p className="mb-0">
+              Here you can find our all latest courses. Choose some of them and
+              try to grow up your skills.
+            </p>
+          </Slide>
+        </div>
+
+        <Container>
+          <div className="my-3 d-flex flex-wrap justify-content-between">
+            {courses.slice(0, 6)?.map((course) => (
+              <Course key={course.key} course={course} />
+            ))}
+          </div>
+        </Container>
+      </div>
     </div>
   );
 };
