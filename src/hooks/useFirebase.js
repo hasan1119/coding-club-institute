@@ -31,6 +31,13 @@ const useFirebase = () => {
   const [photo, setPhoto] = useState("");
   const [password, setPassword] = useState("");
 
+  // clear error
+  useEffect(() => {
+    setTimeout(() => {
+      setError("");
+    }, 5000);
+  }, [error]);
+
   // google sign in
   function signInWithGoogle() {
     signInWithPopup(auth, googleProvider)

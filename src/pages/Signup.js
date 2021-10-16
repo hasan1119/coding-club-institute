@@ -11,7 +11,10 @@ import {
 import { NavLink } from "react-router-dom";
 
 const Signup = () => {
-  const { getPhoto, getName, singUp, getEmail, getPassword, error } = useAuth();
+  const { AllContexts } = useAuth();
+
+  const { getPhoto, getName, singUp, getEmail, getPassword, error } =
+    AllContexts;
 
   return (
     <div className="text-center my-4">

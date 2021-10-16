@@ -8,7 +8,8 @@ import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth.js";
 
 const Header = () => {
-  const { user, logOut } = useAuth();
+  const { AllContexts } = useAuth();
+  const { user, logOut } = AllContexts;
   const { displayName, photoURL, email } = user;
   return (
     <div>

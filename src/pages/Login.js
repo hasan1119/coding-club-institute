@@ -9,6 +9,7 @@ import facebook from "./../assets/images/facebook.png";
 import github from "./../assets/images/github.png";
 
 const Login = () => {
+  const { AllContexts } = useAuth();
   const {
     getEmail,
     getPassword,
@@ -17,7 +18,8 @@ const Login = () => {
     signInWithGoogle,
     signInWithGithub,
     signInWithFacebook,
-  } = useAuth();
+  } = AllContexts;
+
   return (
     <div className="text-center my-4">
       <h2>Please Login</h2>

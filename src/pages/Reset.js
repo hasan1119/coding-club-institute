@@ -3,12 +3,14 @@ import { Form, Button } from "react-bootstrap";
 import useAuth from "../hooks/useAuth.js";
 
 const Reset = () => {
-  const { getEmail, passwordReset } = useAuth();
+  const { AllContexts } = useAuth();
+  const { getEmail, passwordReset, error } = AllContexts;
   return (
     <div className="text-center w-25 mx-auto my-5">
       <Form onSubmit={passwordReset}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Your Email address</Form.Label>
+          <p className="text-danger">{error}</p>
           <Form.Control
             onBlur={getEmail}
             type="email"

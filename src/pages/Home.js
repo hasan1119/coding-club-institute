@@ -5,8 +5,10 @@ import { Container, Button, Row } from "react-bootstrap";
 import Bounce from "react-reveal/Bounce";
 import Slide from "react-reveal/Slide";
 import { NavLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth.js";
 
 const Home = () => {
+  const { courses } = useAuth();
   return (
     <div>
       <div
@@ -46,6 +48,8 @@ const Home = () => {
           </div>
         </Container>
       </div>
+
+      <h1>{courses.length}</h1>
     </div>
   );
 };
