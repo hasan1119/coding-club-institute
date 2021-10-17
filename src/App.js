@@ -1,6 +1,5 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./components/header/Header.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "./pages/Home.js";
@@ -12,10 +11,11 @@ import Login from "./pages/Login.js";
 import Signup from "./pages/Signup.js";
 import PageNotFound from "./pages/PageNotFound.js";
 import AuthProvider from "./contexts/AuthProvider.js";
-import Footer from "./components/footer/Footer.js";
 import Reset from "./pages/Reset.js";
 import Details from "./pages/Details.js";
 import PrivateRoute from "./route/PrivateRoute.js";
+import Footer from "./components/Footer/Footer.js";
+import Header from "./components/Header/Header.js";
 
 function App() {
   return (
