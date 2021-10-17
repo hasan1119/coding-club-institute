@@ -30,6 +30,7 @@ const useFirebase = () => {
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(true);
 
   // clear error
   useEffect(() => {
@@ -80,7 +81,10 @@ const useFirebase = () => {
     const unsubscribe = onAuthStateChanged(auth, (signedInUser) => {
       if (signedInUser) {
         setUser(signedInUser);
+      } else {
+        setUser({});
       }
+      setLoading(false);
     });
     return () => unsubscribe;
   }, []);
@@ -156,6 +160,7 @@ const useFirebase = () => {
     getPhoto,
     getName,
     passwordReset,
+    loading,
   };
 };
 

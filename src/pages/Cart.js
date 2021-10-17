@@ -88,6 +88,7 @@ const Cart = () => {
               <button
                 onClick={() => {
                   alert("This for purchasing");
+                  localStorage.setItem("cart", JSON.stringify([]));
                   setSelectedCourse([]);
                   history.push("/home");
                 }}

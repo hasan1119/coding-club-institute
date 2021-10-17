@@ -18,6 +18,7 @@ const Home = () => {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center center",
           backgroundSize: "cover",
+          width: "100%",
         }}
       >
         <Container>
@@ -50,7 +51,11 @@ const Home = () => {
         </Container>
       </div>
 
-      <div className="py-5" style={{ background: `url(${bgImage})` }}>
+      <div
+        id="feature"
+        className="py-5"
+        style={{ background: `url(${bgImage})` }}
+      >
         <div className="text-center text-white">
           <Slide left>
             <h1>Our Feature Courses</h1>
@@ -66,9 +71,11 @@ const Home = () => {
 
         <Container>
           <div className="my-3 d-flex flex-wrap justify-content-between">
-            {courses.slice(0, 6)?.map((course) => (
-              <Course key={course.key} course={course} />
-            ))}
+            <Row>
+              {courses.slice(0, 6)?.map((course) => (
+                <Course key={course.key} course={course} />
+              ))}
+            </Row>
           </div>
         </Container>
       </div>

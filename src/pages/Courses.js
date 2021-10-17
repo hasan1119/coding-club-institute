@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import useAuth from "./../hooks/useAuth.js";
 import Slide from "react-reveal/Slide";
 import sectionBG from "./../assets/images/sectionBg.png";
@@ -24,10 +24,12 @@ const Courses = () => {
       </div>
 
       <Container>
-        <div className="my-3 d-flex flex-wrap justify-content-between">
-          {courses.map((course) => (
-            <Course key={course.key} course={course} />
-          ))}
+        <div className="my-3 d-flex flex-wrap justify-content-between ">
+          <Row>
+            {courses.map((course) => (
+              <Course key={course.key} course={course} />
+            ))}
+          </Row>
         </div>
       </Container>
     </div>

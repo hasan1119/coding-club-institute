@@ -5,18 +5,21 @@ import HeaderBG from "./../../assets/images/header-bg.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import useAuth from "../../hooks/useAuth.js";
+import "./header.css";
 
 const Header = () => {
   const { AllContexts, selectedCourse } = useAuth();
   const { user, logOut } = AllContexts;
   const { displayName, photoURL, email } = user;
   return (
-    <div className="sticky-top">
+    <div className="">
       <Navbar style={{ background: `url(${HeaderBG})` }} expand="lg">
         <Container>
           <Navbar.Brand as={NavLink} className="text-white" to="/home">
-            <img width="70px" src={logo} alt="Logo" /> Coding Club Institute
+            <img width="70px" src={logo} alt="Logo" />{" "}
+            <span className="title"> Coding Club Institute</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -34,6 +37,9 @@ const Header = () => {
               </Nav.Link>
               <Nav.Link as={NavLink} to="/courses" className="text-white">
                 Courses
+              </Nav.Link>
+              <Nav.Link as={HashLink} to="/home#feature" className="text-white">
+                Feature Courses
               </Nav.Link>
 
               <Nav.Link as={NavLink} to="/cart" className="text-white">

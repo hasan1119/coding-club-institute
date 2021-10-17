@@ -1,7 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useCart = () => {
   const [selectedCourse, setSelectedCourse] = useState([]);
+
+  useEffect(() => {
+    const cart = getCart();
+    setSelectedCourse(cart);
+  }, []);
+
+  function getCart() {
+    let cart;
+    const isHave = localStorage.getItem("cart");
+    if (isHave) {
+      cart = JSON.parse(isHave);
+    } else {
+      cart = [];
+    }
+    return cart;
+  }
+
   function addToCart(course) {
     const isHave = selectedCourse.find(
       (selected) => selected.key === course.key
@@ -11,6 +28,7 @@ const useCart = () => {
       alert("course has been selected!");
     } else {
       const newSelection = [...selectedCourse, course];
+      localStorage.setItem("cart", JSON.stringify(newSelection));
       setSelectedCourse(newSelection);
     }
   }
@@ -19,6 +37,7 @@ const useCart = () => {
     const selectAfterRemove = selectedCourse.filter(
       (course) => course.key !== key
     );
+    localStorage.setItem("cart", JSON.stringify(selectAfterRemove));
     setSelectedCourse(selectAfterRemove);
   }
 
