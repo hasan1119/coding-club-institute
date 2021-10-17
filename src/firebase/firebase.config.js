@@ -1,10 +1,11 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyA2R8wrirCNaABr3j9rA1AVt56yJIR9lcg",
-  authDomain: "coding-club-institute.firebaseapp.com",
-  projectId: "coding-club-institute",
-  storageBucket: "coding-club-institute.appspot.com",
-  messagingSenderId: "906500414358",
-  appId: "1:906500414358:web:5eeaac653e56c1ebb09bb7",
+  apiKey: "AIzaSyBuwPRA-OrQx9rB6y3zroiIbyb6gYj-q5E",
+  authDomain: "coding-club-pro.firebaseapp.com",
+  databaseURL: "https://coding-club-pro-default-rtdb.firebaseio.com",
+  projectId: "coding-club-pro",
+  storageBucket: "coding-club-pro.appspot.com",
+  messagingSenderId: "543771675785",
+  appId: "1:543771675785:web:e8f37ac6cb738e375fca58",
 };
 
 export default firebaseConfig;
