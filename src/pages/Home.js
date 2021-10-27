@@ -1,7 +1,7 @@
 import React from "react";
 import bgImage from "./../assets/images/sectionBg.png";
 import Bg from "./../assets/images/bg.png";
-import { Container, Button, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import Bounce from "react-reveal/Bounce";
 import Slide from "react-reveal/Slide";
 import { NavLink } from "react-router-dom";

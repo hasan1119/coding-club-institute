@@ -1,6 +1,5 @@
 import React from "react";
 import "./footer.css";
-import footerBG from "./../../assets/images/footer-bg.png";
 import payment from "./../../assets/images/payment.png";
 import footerLogo from "./../../assets/images/footer-logo.png";
 import { Col, Container, Row } from "react-bootstrap";
