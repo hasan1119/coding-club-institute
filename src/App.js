@@ -14,8 +14,8 @@ import AuthProvider from "./contexts/AuthProvider.js";
 import Reset from "./pages/Reset.js";
 import Details from "./pages/Details.js";
 import PrivateRoute from "./route/PrivateRoute.js";
-import Footer from "./components/Footer/Footer.js";
-import Header from "./components/Header/Header.js";
+import Footer from "./components/footer/Footer.js";
+import Header from "./components/header/Header.js";
 
 function App() {
   return (
