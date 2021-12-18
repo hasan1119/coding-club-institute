@@ -4,7 +4,7 @@ Description: Coding Club Institute is a Czech multinational footwear and fashion
 
 #
 
-Live Site Link: https://assignment-012.web.app/
+Live Site Link: https://coding-club-institute.web.app/
 
 Technology we use to build this project:
 
